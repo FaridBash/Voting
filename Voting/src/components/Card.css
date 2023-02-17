@@ -1,0 +1,9 @@
+
+
+.card{
+    /* width: 10rem;
+    height: 10rem; */
+    border: 2px solid black;
+    box-shadow: 1px 1px 10px #fff;
+    border-radius: 10px;
+}

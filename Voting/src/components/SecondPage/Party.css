@@ -1,0 +1,13 @@
+
+
+.party{
+    width: 15rem;
+    height: 30rem;
+    /* position: absolute;
+    left: 3rem; */
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: end;
+    
+}

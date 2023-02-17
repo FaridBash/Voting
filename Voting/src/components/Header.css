@@ -1,0 +1,27 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+}
+h3{
+    margin-left: 0.6rem;
+}
+h4{
+    background: #25305B;
+    padding: 0.3rem 1rem;
+    border-radius: 10px;
+}
