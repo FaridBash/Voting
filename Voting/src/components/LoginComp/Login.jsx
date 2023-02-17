@@ -1,12 +1,13 @@
 
 import './Login.css'
 import { users } from '../../data';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 export default function Login(props){
 
     const [username, setUsername]=useState('');
     const [password, setPassword]=useState('');
     const [loginStatus, setLoginStatus]=useState('');
+    const [signedUser, setSignedUser]=useState({});
 
     const usernameHandler=(e)=>{
         console.log(e.target.value);
@@ -26,13 +27,19 @@ export default function Login(props){
         }else if(user){
             e.preventDefault();
             setLoginStatus('Success');
-            // setLoginStatus('');
             console.log("submit handler: ", user);
-            props.onSaveUSerData();
+            console.log("signed user: ", signedUser);
+            setSignedUser(user);
             return user;
         }
     }
 
+    useEffect(() => {
+        // Update the document title using the browser API
+        // document.title = `You clicked ${count} times`;
+        
+        props.onSaveUSerData(signedUser);
+      });
     
     return <div className="login" >
         <form id='input-holder'>
@@ -44,10 +51,10 @@ export default function Login(props){
     </div>
 }
 
-function checkUserExist(username, password){
+function checkUserExist(email, password){
 
     const getUser= users.find((u)=>{
-        if(u.name===username){
+        if(u.email===email){
             if(u.password===password){
                 console.log('Login Succeeded');
                 localStorage.setItem('user',JSON.stringify(u));

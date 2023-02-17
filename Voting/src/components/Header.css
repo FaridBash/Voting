@@ -17,11 +17,31 @@
     left: 0;
     border-radius: 0;
 }
-h3{
-    margin-left: 0.6rem;
+#polling-station{
+    /* margin-left: 0.6rem; */
+    width: 80%;
+    display: flex;
+    justify-content: left;
+    margin-left: 4rem;
 }
-h4{
+#welcome-user{
+   
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #25305B;
+}
+
+#logout{
+    width: fit-content;
+    height: 2rem;
     background: #25305B;
     padding: 0.3rem 1rem;
+    margin-right: 2rem;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
 }

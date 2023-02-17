@@ -1,56 +1,24 @@
 import './Party.css'
 import Card from '../Card'
-// import {
-//     Chart as ChartJS,
-//     categoryScale,
-//     LinearScale,
-//     BarElement,
-//     Title,
-//     Tooltip,
-//     Legend,
-// } from 'chart.js'
-
-// import {Bar} from "react-chartjs-2";
 import React, {useState, useEffect} from "react"
 
 export default function Party(props){
     const [counter, setCounter]=useState(0);
-    // const [chartData, setChartData]=useState({
-    //     datasets:[],
-    // });
-    // const [chartOptions, setChartOptions]=useState({});
-
-    // useEffect(()=>{
-    //     setChartData({
-    //         labels:[props.label],
-    //         datasets:[
-    //             {
-    //                 label: "F",
-    //                 data:[counter],
-    //                 borderColor: "rgb(53, 162, 235)",
-    //                 backgroundColor: "rgba(53, 162, 235, 0.4)"
-    //             }
-    //         ]
-    //     });
-    //     setChartOptions({
-    //         response: true,
-    //         Plugins:{
-    //             legend:{
-    //                 position: "top"
-    //             },
-    //             title:{
-    //                 display: true,
-    //                 text:"Farid"
-    //             }
-    //         }
-    //     })
-    // }, []);
-
-
-
+    const mystyle = {
+        width: "100%",
+        height: (counter*15),
+        color: "#fff",
+        backgroundColor: props.barColor,
+        padding: "10px",
+        fontFamily: "Arial",
+        marginBottom:'0.5rem'
+      };
+      console.log(counter);
     return <Card className='party'>
-        <div style={{height0:150}}></div>
-    <button onClick={()=>{setCounter(counter+1)}}>Vote For Cat Party</button>
+        <h5>{counter} {"Votes"}</h5>
+        {console.log("counter height",counter)}
+        <div style={mystyle}></div>
+    <button onClick={()=>{setCounter(counter+1)}}>Vote For {props.party} Party</button>
     </Card>
 
 }

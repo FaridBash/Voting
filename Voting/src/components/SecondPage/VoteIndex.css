@@ -8,5 +8,29 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    
+
+}
+
+
+.div-party{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+
+@media only screen and (max-width: 800px){
+
+    .vote-index{
+        display: flex;
+    }
+
+    .div-party{
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+    }
+
 }
