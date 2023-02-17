@@ -49,7 +49,7 @@ export default function Party(props){
 
 
     return <Card className='party'>
-        <div className='voting' style={{height:counter}}></div>
+        <div style={{height0:150}}></div>
     <button onClick={()=>{setCounter(counter+1)}}>Vote For Cat Party</button>
     </Card>
 
