@@ -1,19 +1,19 @@
  const parties=[
     {
     partyName : "cat",
-    votes: 0
+    votes: parseInt(localStorage.getItem('cat'))
 },
     {
     partyName : "dog",
-    votes: 0
+    votes: parseInt(localStorage.getItem('dog'))
 },
     {
     partyName : "horse",
-    votes: 0
+    votes: parseInt(localStorage.getItem('horse'))
 },
     {
     partyName : "lion",
-    votes: 0
+    votes: parseInt(localStorage.getItem('lion'))
 },
 ]
 
