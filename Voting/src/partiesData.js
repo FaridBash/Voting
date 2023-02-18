@@ -1,19 +1,40 @@
+ 
+ let catVotes=localStorage.getItem('cat');
+
+//  if(catVotes===undefined || catVotes===null || catVotes==='' || catVotes===NaN){
+//     catVotes=0;
+//  }else{
+//     catVotes=parseInt(catVotes);
+//  }
+ 
+ let dogVotes=localStorage.getItem('dog');
+
+
+ let horseVotes=localStorage.getItem('horse');
+
+
+ let lionVotes=localStorage.getItem('lion');
+
+
+ 
+ 
  const parties=[
     {
     partyName : "cat",
-    votes: parseInt(localStorage.getItem('cat'))
+    votes: JSON.parse(catVotes)
 },
     {
     partyName : "dog",
-    votes: parseInt(localStorage.getItem('dog'))
+    votes: JSON.parse(dogVotes)
 },
     {
     partyName : "horse",
-    votes: parseInt(localStorage.getItem('horse'))
-},
+    votes: JSON.parse(horseVotes)
+    },
+
     {
     partyName : "lion",
-    votes: parseInt(localStorage.getItem('lion'))
+    votes: JSON.parse(lionVotes)
 },
 ]
 

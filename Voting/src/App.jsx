@@ -27,7 +27,7 @@ let avilableUser={};
           localStorage.getItem('welcome-user') != undefined ? <Header name={"Welcome, "+localStorage.getItem('welcome-user')}/>:<Header/>
         }
         {
-          localStorage.getItem('user')==='' ? <Login onSaveUSerData={getUser} />:<VoteIndex/>
+          localStorage.getItem('user')===null ? <Login onSaveUSerData={getUser} />:<VoteIndex/>
         }
         {/* <SignedUser signedUser={onlineUser}/> */}
         {console.log("APPPPP: ",localStorage.getItem('user'))}

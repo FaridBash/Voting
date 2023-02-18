@@ -30,6 +30,13 @@ export default function Login(props){
             console.log("submit handler: ", user);
             console.log("signed user: ", signedUser);
             setSignedUser(user);
+            localStorage.setItem('cat', JSON.stringify(0));
+            localStorage.setItem('dog', JSON.stringify(0));
+            localStorage.setItem('horse', JSON.stringify(0));
+            localStorage.setItem('lion', JSON.stringify(0));
+            console.log("localStorage.getItem('cat'): ",localStorage.getItem('cat'));
+            console.log("localStorage.getItem('cat') type of: ",localStorage.getItem('cat'));
+            console.log("localStorage.getItem('cat') type of parse: ", JSON.parse(localStorage.getItem('cat')));
             return user;
         }
     }
