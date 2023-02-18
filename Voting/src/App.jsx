@@ -11,6 +11,7 @@ import VoteIndex from './components/SecondPage/VoteIndex'
 
 function App() {
   const [userName, setUsername]=useState('');
+  const [comp, setComp]=useState(<Login/>);
 let avilableUser={};
   const getUser=(user)=>{
     console.log("IN APP: ", user);
@@ -20,18 +21,31 @@ let avilableUser={};
 
   return (
     <div className="App">
-      {/* <Header name={"Welcome, "+userName} /> */}
+      <div id='header'>
+      <Card className='header'>
+        
+        <h3 id='polling-station'>The Polling Station</h3>
+        <h4 id='welcome-user'>{userName}</h4>
+        <button id='logout' onClick={()=>{
+            localStorage.setItem('user','');
+            localStorage.setItem('welcome-user','');
+            setComp(<Login/>);
+            comp;
+         }}
+         >Logout</button>
+    </Card>
+      </div>
+      
         
       {console.log(`localStorage.getItem(welcome user)`, localStorage.getItem(`welcome-user`))}
         {
-          localStorage.getItem('welcome-user') != undefined ? <Header name={"Welcome, "+localStorage.getItem('welcome-user')}/>:<Header/>
+          // localStorage.getItem('welcome-user') != undefined ? <Header name={"Welcome, "+localStorage.getItem('welcome-user')}/>:<Header/>
         }
         {
-          localStorage.getItem('user')===null ? <Login onSaveUSerData={getUser} />:<VoteIndex/>
+          localStorage.getItem('user')==='' ? <Login onSaveUSerData={getUser} />:<VoteIndex/>
         }
-        {/* <SignedUser signedUser={onlineUser}/> */}
         {console.log("APPPPP: ",localStorage.getItem('user'))}
-  
+        
     </div>
   )
 }

@@ -5,33 +5,46 @@ import parties from "../../partiesData";
 export default function Party(props) {
     
     
-    const [partyNameFromBtn, setPartyNameFromBtn] = useState("");
-    let numFromStorage=JSON.parse(localStorage.getItem(partyNameFromBtn));
-    const [counter, setCounter] = useState(numFromStorage);
+    const [partyNameFromBtn, setPartyNameFromBtn] = useState("c");
+    const num=JSON.parse(localStorage.getItem(partyNameFromBtn+"Votes"));
+    const [numOfVotes, setNumOfVotes]=useState(0);
+    console.log("numOfVotes: ",numOfVotes );
+    const [counter, setCounter] = useState(numOfVotes);
+    
 
-  const party = parties.find((n) => {
-    return n.partyName === partyNameFromBtn ? n : 0;
-  });
-//   let barHeight = counter;
-//   if (party != undefined) {
-    // barHeight = parseInt(party.votes);
-//   }
+    function partyVote(partyName) {
+        const party = parties.find((n) => {
+          return n.partyName === partyName ? n : 0;
+        });
+        console.log("party", party, "   ");
+        if (party != undefined) {
+          party.votes =numOfVotes;
+          console.log("from undefined: party.votes: ", parseInt(party.votes));
+          
+        }
+      }
+
   const mystyle = {
     width: "100%",
-    // height: props.barHeight,
-    height: counter * 15,
+    height: props.vootes,
     color: "#fff",
     backgroundColor: props.barColor,
     padding: "10px",
     fontFamily: "Arial",
     marginBottom: "0.5rem",
+    opacity:"0.7"
   };
  
 
   useEffect(() => {
-    partyVote(partyNameFromBtn, counter);
-    console.log("EFECT VV: ", partyNameFromBtn, " v ", counter);
+      console.log("EFECT VV: ", partyNameFromBtn, " v ", counter);
+      localStorage.setItem(partyNameFromBtn+"Votes",JSON.stringify(counter));
+      setNumOfVotes(JSON.parse(localStorage.getItem(partyNameFromBtn+"Votes")));
+      partyVote(partyNameFromBtn);
   });
+
+
+  
 
 
   return (
@@ -41,7 +54,7 @@ export default function Party(props) {
       </div>
       <div id="party-voting">
         <h5>
-          {counter} {"Votes"}
+          {props.barVotes} {"Votes"}
         </h5>
         {console.log("counter height", counter)}
         <div style={mystyle}></div>
@@ -50,7 +63,7 @@ export default function Party(props) {
           onClick={(e) => {
             setCounter(counter + 1);
             setPartyNameFromBtn(e.target.id);
-            partyVote(partyNameFromBtn, counter)
+            setNumOfVotes(numOfVotes+1);
           }}
         >
           Vote For {props.party} Party
@@ -61,14 +74,4 @@ export default function Party(props) {
 }
 
 
-function partyVote(partyName, c) {
-  const party = parties.find((n) => {
-    return n.partyName === partyName ? n : 0;
-  });
-  console.log("party", party, "   ");
-  if (party != undefined) {
-    party.votes = c;
-    console.log("from undefined: party.votes: ", parseInt(party.votes));
-    localStorage.setItem(party.partyName, party.votes);
-  }
-}
+

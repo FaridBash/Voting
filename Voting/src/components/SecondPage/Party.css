@@ -17,7 +17,7 @@
 
 #party-name{
     width:80%;
-    height: 10%;
+    height: fit-content;
     background:#03045e;
     text-align: center;
     padding: 0.5rem;
@@ -26,6 +26,7 @@
     align-items: center;
     justify-content: center;
     margin: auto;
+    
 }
 #party-voting{
     width:100%;
@@ -33,6 +34,7 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
+    
 }
 
 @media only screen and (max-width: 800px){
@@ -53,5 +55,9 @@
         width: fit-content;
         height: 2rem;
         font-size: 12px;
+    }
+
+    #part-name{
+        font-size: 7px;
     }
 }

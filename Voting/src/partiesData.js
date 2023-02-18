@@ -21,20 +21,20 @@
  const parties=[
     {
     partyName : "cat",
-    votes: JSON.parse(catVotes)
+    votes: JSON.parse(localStorage.getItem("catVotes"))
 },
     {
     partyName : "dog",
-    votes: JSON.parse(dogVotes)
+    votes: JSON.parse(localStorage.getItem("dogVotes"))
 },
     {
     partyName : "horse",
-    votes: JSON.parse(horseVotes)
+    votes: JSON.parse(localStorage.getItem("horseVotes"))
     },
 
     {
     partyName : "lion",
-    votes: JSON.parse(lionVotes)
+    votes: JSON.parse(localStorage.getItem("lionVotes"))
 },
 ]
 
