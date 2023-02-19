@@ -5,7 +5,7 @@ import parties from "../../partiesData";
 export default function Party(props) {
     
     
-    const [partyNameFromBtn, setPartyNameFromBtn] = useState("c");
+    const [partyNameFromBtn, setPartyNameFromBtn] = useState("x");
     const num=JSON.parse(localStorage.getItem(partyNameFromBtn+"Votes"));
     const [numOfVotes, setNumOfVotes]=useState(0);
     console.log("numOfVotes: ",numOfVotes );
