@@ -7,7 +7,7 @@ export default function Party(props) {
   
   const [votes, setVotes]=useState(JSON.parse(localStorage.getItem(props.party)));
   const [totalVotes, setTotalVotes]=useState(0);
-  const [voteClicked, setVoteClicked]=useState(false);
+  const [voteClicked, setVoteClicked]=useState(JSON.parse(localStorage.getItem(localStorage.getItem("welcome-user"))));
 
   useEffect(() => {
     localStorage.setItem(props.party, votes||0);
@@ -55,7 +55,7 @@ export default function Party(props) {
           {votes} {"Votes"}
         </h5>
         <div style={mystyle}></div>
-        {/* { props.voted===false? <button>confirm</button>:} */}
+        
         <button
         disabled={props.voted}
           id={props.btnId}
