@@ -5,19 +5,15 @@ import './VoteIndex.css'
 import parties from "../../partiesData";
 export default function VoteIndex(){
 
-    // const catBar=parties.filter(n=>{if(n.partyName==="cat"){ return n}})[0];
-    // const catVotes=catBar.votes;
-    // console.log("catBar", catVotes);
-    // localStorage.setItem("catVotes",JSON.stringify(catVotes));
-    // console.log(localStorage.getItem('catVotes'));
-    // const dogBar=parties.filter(n=>{if(n.partyName==="dog"){ return n}})[0];
-    // const dogVotes=dogBar.votes;
-    // const horseBar=parties.filter(n=>{if(n.partyName==="horse"){ return n}})[0];
-    // const horseVotes=horseBar.votes;
-    // const lionBar=parties.filter(n=>{if(n.partyName==="lion"){ return n}})[0];
-    // const lionVotes=lionBar.votes;
-    
 
+  const [voted, setVoted] = useState(false);
+
+  const userVotedBtn = (childData) => {
+    setVoted(childData);
+    console.log("child data: ",childData);
+  }
+  localStorage.setItem(localStorage.getItem("welcome-user"),voted)
+  const userVotedFromStorage=JSON.parse(localStorage.getItem(localStorage.getItem("welcome-user")));
     // const parties=["cat", "dog", "lion", "horse"];
     // setParties(parties);
     // consoleParties(parties);
@@ -27,12 +23,12 @@ export default function VoteIndex(){
     // const [catHight, setCatHight]=useState(catVotes*15);
     return <Card className="vote-index">
         <div className="div-party">
-        <Party party={"Cat"} barColor={"#48cae4"} btnId={"cat"} vootes={15} barVotes={15} />
-        <Party party={"Dog"} barColor={"#00b4d8"} btnId={"dog"} vootes={15} barVotes={15} />
+        <Party party={"Cat"} barColor={"#48cae4"} btnId={"cat"} didVote={userVotedBtn} voted={userVotedFromStorage}  />
+        <Party party={"Dog"} barColor={"#00b4d8"} btnId={"dog"} didVote={userVotedBtn} voted={userVotedFromStorage}/>
         </div>
         <div className="div-party">
-        <Party party={"Horse"} barColor={"#0096c7"} btnId={"horse"} vootes={15} barVotes={15} />
-        <Party party={"Lion"} barColor={"#0077b6"} btnId={"lion"} vootes={15} barVotes={15} />
+        <Party party={"Horse"} barColor={"#0096c7"} btnId={"horse"} didVote={userVotedBtn} voted={userVotedFromStorage} />
+        <Party party={"Lion"} barColor={"#0077b6"} btnId={"lion"} didVote={userVotedBtn} voted={userVotedFromStorage} />
         </div>
     </Card>
 }
@@ -40,8 +36,6 @@ export default function VoteIndex(){
 
 function setParties(partyArr){
     
-    
-
     for (let i = 0; i < partyArr.length; i++) {
       const element = partyArr[i];
         const val=JSON.parse(localStorage.getItem(element));
@@ -55,7 +49,6 @@ function setParties(partyArr){
     }
   
   }
-  
   
   function consoleParties(partyArr){
     for (let i = 0; i < partyArr.length; i++) {

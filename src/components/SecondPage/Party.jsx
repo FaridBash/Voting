@@ -6,14 +6,32 @@ export default function Party(props) {
     
   
   const [votes, setVotes]=useState(JSON.parse(localStorage.getItem(props.party)));
-
+  const [totalVotes, setTotalVotes]=useState(0);
+  const [voteClicked, setVoteClicked]=useState(false);
 
   useEffect(() => {
-    localStorage.setItem(props.party, votes);
-
+    localStorage.setItem(props.party, votes||0);
+    
   });
+  
+  
+  useEffect(() => {
+    votesCounter(parties);
+    props.didVote(voteClicked);
+  },[votes]);
 
-    //  console.log("votes from useEFfect: ", votes);
+  function votesCounter(arr){
+    let tot=0;
+    for (let index = 0; index < arr.length; index++) {
+      const element = arr[index];
+      const eleV=element.votes||0;
+      tot+=eleV;
+      setTotalVotes(totalVotes+tot);
+      // console.log(totalVotes);
+      console.log("my Total",element.votes);
+      
+    }
+  }
     
 
 
@@ -22,12 +40,10 @@ export default function Party(props) {
     height: votes*3,
     color: "#fff",
     backgroundColor: props.barColor,
-    // padding: "10px",
     fontFamily: "Arial",
     marginBottom: "0.5rem",
     opacity:"0.7",
   };
-
 
     return (
     <Card className="party">
@@ -39,10 +55,14 @@ export default function Party(props) {
           {votes} {"Votes"}
         </h5>
         <div style={mystyle}></div>
+        {/* { props.voted===false? <button>confirm</button>:} */}
         <button
+        disabled={props.voted}
           id={props.btnId}
           onClick={(e) => {
            setVotes(votes+1);
+           setVoteClicked(true);
+    
           }}
         >
           Vote For {props.party} Party
