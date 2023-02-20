@@ -26,13 +26,16 @@ export default function VoteIndex(){
     // const [catHight, setCatHight]=useState(catVotes*15);
 
     if(voted){
-      return <div> <h4>Do you want to change your mind? Otherwise Logout</h4> <button onClick={()=>{
+      return <div id="edit-vote"> <h4>Do you want to change your mind? Otherwise Logout</h4> <button onClick={()=>{
         setVoted(false);
         localStorage.setItem(getPart, JSON.parse(localStorage.getItem(getPart))-1);
       }}>Edit</button> </div>
     }else{
-
       return <Card className="vote-index">
+        {voted===true ? <div id="edit-vote"> <h4>Do you want to change your mind? Otherwise Logout</h4> <button onClick={()=>{
+        setVoted(false);
+        localStorage.setItem(getPart, JSON.parse(localStorage.getItem(getPart))-1);
+      }}>Edit</button> </div> : <div></div> }
         <div className="div-party">
         <Party party={"Cat"} barColor={"#48cae4"} btnId={"cat"} didVote={userVotedBtn} voted={userVotedFromStorage} clickedParty={part}  />
         <Party party={"Dog"} barColor={"#00b4d8"} btnId={"dog"} didVote={userVotedBtn} voted={userVotedFromStorage} clickedParty={part} />

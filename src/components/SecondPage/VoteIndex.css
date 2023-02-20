@@ -21,6 +21,18 @@
 }
 
 
+#edit-vote{
+    width: 20rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
 @media only screen and (max-width: 800px){
 
     .vote-index{
