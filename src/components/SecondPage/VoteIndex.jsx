@@ -8,13 +8,18 @@ export default function VoteIndex(){
 
   const userVotedFromStorage=JSON.parse(localStorage.getItem(localStorage.getItem("welcome-user")));
   const [voted, setVoted] = useState(userVotedFromStorage);
-
+  const [getPart, setPart]=useState('');
   const userVotedBtn = (childData) => {
     setVoted(childData);
     console.log("child data: ",childData);
   }
   localStorage.setItem(localStorage.getItem("welcome-user"),voted)
   
+
+  const part=(childData)=>{
+    console.log(childData);
+    setPart(childData);
+  }
     // const parties=["cat", "dog", "lion", "horse"];
     // setParties(parties);
     // consoleParties(parties);
@@ -23,17 +28,18 @@ export default function VoteIndex(){
     if(voted){
       return <div> <h4>Do you want to change your mind? Otherwise Logout</h4> <button onClick={()=>{
         setVoted(false);
+        localStorage.setItem(getPart, JSON.parse(localStorage.getItem(getPart))-1);
       }}>Edit</button> </div>
     }else{
 
       return <Card className="vote-index">
         <div className="div-party">
-        <Party party={"Cat"} barColor={"#48cae4"} btnId={"cat"} didVote={userVotedBtn} voted={userVotedFromStorage}  />
-        <Party party={"Dog"} barColor={"#00b4d8"} btnId={"dog"} didVote={userVotedBtn} voted={userVotedFromStorage}/>
+        <Party party={"Cat"} barColor={"#48cae4"} btnId={"cat"} didVote={userVotedBtn} voted={userVotedFromStorage} clickedParty={part}  />
+        <Party party={"Dog"} barColor={"#00b4d8"} btnId={"dog"} didVote={userVotedBtn} voted={userVotedFromStorage} clickedParty={part} />
         </div>
         <div className="div-party">
-        <Party party={"Horse"} barColor={"#0096c7"} btnId={"horse"} didVote={userVotedBtn} voted={userVotedFromStorage} />
-        <Party party={"Lion"} barColor={"#0077b6"} btnId={"lion"} didVote={userVotedBtn} voted={userVotedFromStorage} />
+        <Party party={"Horse"} barColor={"#0096c7"} btnId={"horse"} didVote={userVotedBtn} voted={userVotedFromStorage} clickedParty={part} />
+        <Party party={"Lion"} barColor={"#0077b6"} btnId={"lion"} didVote={userVotedBtn} voted={userVotedFromStorage} clickedParty={part} />
         </div>
     </Card>
     }

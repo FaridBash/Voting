@@ -8,16 +8,17 @@ export default function Party(props) {
   const [votes, setVotes]=useState(JSON.parse(localStorage.getItem(props.party)));
   const [totalVotes, setTotalVotes]=useState(0);
   const [voteClicked, setVoteClicked]=useState(JSON.parse(localStorage.getItem(localStorage.getItem("welcome-user"))));
-
+  const [getPartyName, setPartyName]=useState('');
   useEffect(() => {
     localStorage.setItem(props.party, votes||0);
     
-  });
+  }),[];
   
   
   useEffect(() => {
-    votesCounter(parties);
+    // votesCounter(parties);
     props.didVote(voteClicked);
+    props.clickedParty(getPartyName);
   },[votes]);
 
   function votesCounter(arr){
@@ -62,7 +63,7 @@ export default function Party(props) {
           onClick={(e) => {
            setVotes(votes+1);
            setVoteClicked(true);
-    
+            setPartyName(props.party);
           }}
         >
           Vote For {props.party} Party
