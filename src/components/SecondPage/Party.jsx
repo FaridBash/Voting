@@ -9,6 +9,7 @@ export default function Party(props) {
   const [totalVotes, setTotalVotes]=useState(0);
   const [voteClicked, setVoteClicked]=useState(JSON.parse(localStorage.getItem(localStorage.getItem("welcome-user"))));
   const [getPartyName, setPartyName]=useState('');
+  const [votedUserObj, setVotedUserObj]=useState(JSON.parse(localStorage.getItem('user')));
   useEffect(() => {
     localStorage.setItem(props.party, votes||0);
     
@@ -16,9 +17,12 @@ export default function Party(props) {
   
   
   useEffect(() => {
-    // votesCounter(parties);
     props.didVote(voteClicked);
     props.clickedParty(getPartyName);
+    setVotedUserObj({...votedUserObj,
+      voted:true});
+    localStorage.setItem('user', JSON.stringify(votedUserObj));
+    console.log("votedUserObj",votedUserObj);
   },[votes]);
 
   function votesCounter(arr){

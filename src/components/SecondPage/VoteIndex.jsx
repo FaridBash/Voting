@@ -7,6 +7,7 @@ export default function VoteIndex(){
 
 
   const userVotedFromStorage=JSON.parse(localStorage.getItem(localStorage.getItem("welcome-user")));
+  const [unVotedUserObj, setUnVotedUserObj]=useState(JSON.parse(localStorage.getItem('user')));
   const [voted, setVoted] = useState(userVotedFromStorage);
   const [getPart, setPart]=useState('');
   const userVotedBtn = (childData) => {
@@ -29,13 +30,17 @@ export default function VoteIndex(){
       return <div id="edit-vote"> <h4>Do you want to change your mind? Otherwise Logout</h4> <button onClick={()=>{
         setVoted(false);
         localStorage.setItem(getPart, JSON.parse(localStorage.getItem(getPart))-1);
+        setUnVotedUserObj({...unVotedUserObj,
+          voted:false});
+          localStorage.setItem('user', JSON.stringify(unVotedUserObj));
+          console.log(unVotedUserObj);
       }}>Edit</button> </div>
     }else{
       return <Card className="vote-index">
-        {voted===true ? <div id="edit-vote"> <h4>Do you want to change your mind? Otherwise Logout</h4> <button onClick={()=>{
+        {voted===true ? (<div id="edit-vote"> <h4>Do you want to change your mind? Otherwise Logout</h4> <button onClick={()=>{
         setVoted(false);
         localStorage.setItem(getPart, JSON.parse(localStorage.getItem(getPart))-1);
-      }}>Edit</button> </div> : <div></div> }
+      }}>Edit</button> </div>) : undefined }
         <div className="div-party">
         <Party party={"Cat"} barColor={"#48cae4"} btnId={"cat"} didVote={userVotedBtn} voted={userVotedFromStorage} clickedParty={part}  />
         <Party party={"Dog"} barColor={"#00b4d8"} btnId={"dog"} didVote={userVotedBtn} voted={userVotedFromStorage} clickedParty={part} />

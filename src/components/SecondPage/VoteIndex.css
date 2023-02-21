@@ -22,17 +22,29 @@
 
 
 #edit-vote{
-    width: 20rem;
-    height: 5rem;
+    width: 50%;
+    height: 15%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 10px;
     position: relative;
-    top: 0;
-    left: 0;
+    /* top: 40%;
+    left: 40%; */
+    border: 1px solid #fff;
+    background: #28325D;
+    z-index: 5;
 }
 
+#edit-vote button{
+    height: fit-content;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
 @media only screen and (max-width: 800px){
 
     .vote-index{

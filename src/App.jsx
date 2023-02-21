@@ -8,6 +8,7 @@ import Party from "./components/SecondPage/Party";
 import { Bar } from "react-chartjs-2";
 import React, { useState, useEffect } from "react";
 import VoteIndex from "./components/SecondPage/VoteIndex";
+import Admin from "./components/Admin/Admin";
 
 function App() {
   const [comp, setComp] = useState(<Login />);
@@ -32,7 +33,7 @@ function App() {
         <Card className="header">
           <h3 id="polling-station">The Polling Station</h3>
           <h4 id="welcome-user">{userName}</h4>
-          {isAdmin===true? <button id="admin-btn">Admin Page</button>:''}
+          {isAdmin===true? <button id="admin-btn" onClick={()=>{<Admin/> }}>Admin Page</button>:''}
           <button
             id="logout"
             onClick={() => {
@@ -52,7 +53,9 @@ function App() {
       ) : (
         <VoteIndex />
       )}
+      
     </div>
+    
   );
 }
 
