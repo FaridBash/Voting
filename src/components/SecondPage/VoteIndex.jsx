@@ -13,9 +13,28 @@ export default function VoteIndex(){
   const userVotedBtn = (childData) => {
     setVoted(childData);
     console.log("child data: ",childData);
+    userVoted(childData);
   }
   localStorage.setItem(localStorage.getItem("welcome-user"),voted)
   
+  function userVoted(voted){
+    let arr=JSON.parse(localStorage.getItem('usersObjArr'));
+    console.log('ARRRRRRRR',arr);
+    let newArr=[];
+    if(arr!=null){
+      arr.map((e)=>{
+        if(e!=null){
+          if(e.name===localStorage.getItem('welcome-user')){
+            e.voted=voted;
+          }
+        }
+      });
+    }
+    console.log("usersObjArr: ", arr);
+    localStorage.setItem('usersObjArr', JSON.stringify(newArr));
+
+  }
+
 
   const part=(childData)=>{
     console.log(childData);
@@ -30,6 +49,7 @@ export default function VoteIndex(){
       return <div id="edit-vote"> <h4>Do you want to change your mind? Otherwise Logout</h4> <button onClick={()=>{
         setVoted(false);
         localStorage.setItem(getPart, JSON.parse(localStorage.getItem(getPart))-1);
+        userVoted(false);
         setUnVotedUserObj({...unVotedUserObj,
           voted:false});
           localStorage.setItem('user', JSON.stringify(unVotedUserObj));

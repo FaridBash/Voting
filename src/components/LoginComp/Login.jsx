@@ -8,7 +8,13 @@ export default function Login(props){
     const [password, setPassword]=useState('');
     const [loginStatus, setLoginStatus]=useState('');
     const [signedUser, setSignedUser]=useState({});
+    const [usersObjArr, setUsersObjArr]=useState(JSON.parse(localStorage.getItem('usersObjArr'))??[]);
 
+    useEffect(()=>{
+        // usersObjArr.push(signedUser);
+        setUsersObjArr([...usersObjArr, signedUser]);
+        localStorage.setItem('usersObjArr', JSON.stringify(usersObjArr));
+    },[signedUser])
     const usernameHandler=(e)=>{
         console.log(e.target.value);
         setUsername(e.target.value);
